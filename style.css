@@ -1,0 +1,503 @@
+/* Estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+body {
+  position: relative;
+  min-height: 100vh;
+  color: #ffffff;
+  background-color: #09090f;
+  overflow-x: hidden;
+}
+
+/* Fondos y efectos de gradiente */
+.bg-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.gradient-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #09090f;
+}
+
+/* Radiales estáticos - colores más vibrantes como Metaportal */
+.radial-light {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transform-origin: center;
+  /* Sin animación - completamente estático */
+}
+
+/* Primer radial - Azul más violeta, más brillante y más grande */
+.radial-light.blue {
+  top: 0%;
+  left: 36%;
+  width: 1500px; /* Un poco más grande */
+  height: 1500px;
+  background: radial-gradient(
+    circle,
+    rgba(124, 90, 255, 1) 0%, /* Más hacia el violeta */
+    rgba(124, 90, 255, 0.95) 2%,
+    rgba(114, 85, 255, 0.9) 4%,
+    rgba(104, 80, 255, 0.85) 6%,
+    rgba(94, 75, 245, 0.8) 9%,
+    rgba(84, 70, 235, 0.7) 13%,
+    rgba(74, 65, 225, 0.6) 18%,
+    rgba(64, 60, 215, 0.5) 24%,
+    rgba(54, 55, 205, 0.4) 32%,
+    rgba(44, 50, 195, 0.3) 43%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  filter: blur(140px);
+  opacity: 0.9; /* Ajustado el brillo */
+}
+
+/* Segundo radial - Azul oscuro indigo, menos rosado */
+.radial-light.purple {
+  bottom: 0%;
+  right: 40%;
+  width: 1300px; /* Un poco más grande */
+  height: 1300px;
+  background: radial-gradient(
+    circle,
+    rgba(160, 70, 255, 1) 0%, /* Más hacia el azul oscuro/índigo */
+    rgba(155, 65, 255, 0.95) 2%,
+    rgba(150, 60, 255, 0.9) 4%,
+    rgba(145, 55, 255, 0.85) 6%,
+    rgba(140, 50, 250, 0.8) 9%,
+    rgba(135, 45, 245, 0.7) 13%,
+    rgba(130, 40, 240, 0.6) 18%,
+    rgba(125, 35, 235, 0.5) 24%,
+    rgba(120, 30, 230, 0.4) 32%,
+    rgba(115, 25, 225, 0.3) 43%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  filter: blur(140px);
+  opacity: 0.85; /* Ajustado el brillo */
+}
+
+/* Núcleo central estático más definido y vibrante */
+.radial-light::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  width: 22%;
+  height: 22%;
+  border-radius: 50%;
+  background: #ffffff;
+  filter: blur(30px);
+  opacity: 0.35; /* Ajustado para efecto mate */
+}
+
+.radial-light.blue::before {
+  background: rgba(124, 90, 255, 0.85); /* Núcleo más azul-violeta */
+}
+
+.radial-light.purple::before {
+  background: rgba(160, 70, 255, 0.85); /* Núcleo más índigo-violeta */
+}
+
+
+.content {
+  position: relative;
+  padding: 100px 8% 50px;
+  z-index: 1;
+}
+
+/* Header con transición mejorada */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0.5cm 20px 8%; /* Reducido el padding derecho a 0.5cm */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(9, 9, 15, 0.8);
+  backdrop-filter: blur(100px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logo-main {
+  font-family: 'Oxanium', sans-serif;
+  color: #fff;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: 'Oxanium', sans-serif;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin-right: 1rem;
+}
+
+nav ul li {
+  margin-left: 40px; /* Aumentado el espacio entre elementos del menú */
+}
+
+nav ul li a {
+  color: #C0C0C0;
+  text-decoration: none;
+  position: relative;
+  padding: 4px 2px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Efecto de transición de color violeta de derecha a izquierda */
+nav ul li a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(219, 90, 255, 0.2);
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+nav ul li a:hover {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+nav ul li a:hover::before {
+  width: 100%;
+  left: 0;
+  right: auto;
+}
+
+.hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 800px;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #C0C0C0;
+  line-height: 1.6;
+}
+
+/* Botón CTA con borde gradient animado mejorado */
+.cta-button {
+  position: relative;
+  padding: 12px 28px;
+  color: #ffffff;
+  font-family: 'Oxanium', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  background: #13131f;
+  border: none;
+  border-radius: 8px; /* Término medio entre redondo y cuadrado */
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: -4.2px; /* Línea más gruesa */
+  left: -4.2px;
+  right: -4.2px;
+  bottom: -4.2px;
+  background: linear-gradient(120deg, 
+  rgba(255, 105, 255, 1),
+  rgba(120, 150, 255, 1),
+  rgba(255, 105, 255, 1)
+  );
+  border-radius: 10px; /* Ajustado al nuevo radio */
+  z-index: -1;
+  background-size: 300% 300%;
+  animation: borderAnimation 7s ease infinite;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 3.4px; /* Ajustado para mantener el grosor de línea */
+  left: 3.4px;
+  right: 3.4px;
+  bottom: 3.4px;
+  background: #13131f;
+  border-radius: 6px; /* Ajustado al nuevo radio */
+  z-index: -1;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(198, 76, 238, 0.4), 0 0 40px rgba(88, 101, 242, 0.2);
+}
+
+.cta-button:hover::before {
+  animation: borderAnimation 2.0s ease infinite;
+}
+
+@keyframes borderAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+section {
+  min-height: 60vh;
+  padding: 100px 0;
+}
+
+section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(9, 9, 15, 0.8);
+}
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  font-size: 2rem;
+  padding: 0.7rem 1rem;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 0 10px #25d366, 0 0 20px #25d366;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.1);
+}
+
+header:not(#stickyHeader).hidden {
+  display: none;
+}
+
+/* Sticky Header con transición mejorada */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(9, 9, 15, 0.6);
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0.5cm 15px 8%; /* Padding derecho reducido */
+  z-index: 999;
+  transform: translateY(-100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.3s ease-in-out, 
+              backdrop-filter 0.3s ease-in-out,
+              padding 0.3s ease-in-out;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sticky-header .sticky-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sticky-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sticky-header.visible {
+  transform: translateY(0);
+}
+
+/* Botón de menú estilo Metaportal */
+.menu-button {
+  display: none; /* Visible solo en móvil */
+  position: relative;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  margin-right: 10px;
+  z-index: 1000;
+}
+
+.menu-button span {
+  display: block;
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.menu-button span:nth-child(1) {
+  top: 12px;
+  left: 6px;
+}
+
+.menu-button span:nth-child(2) {
+  top: 18px;
+  left: 6px;
+}
+
+.menu-button span:nth-child(3) {
+  top: 24px;
+  left: 6px;
+}
+
+.menu-button.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 18px;
+}
+
+.menu-button.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-button.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 18px;
+}
+
+/* Efecto de sombra del menú */
+.menu-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  box-shadow: 0 0 15px 8px rgba(219, 90, 255, 0.35);
+  border-radius: 4px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.menu-button:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+/* Menú móvil desplegable */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  height: 100vh;
+  background-color: rgba(9, 9, 15, 0.98);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.5);
+  padding-top: 80px;
+  padding-left: 2rem;
+}
+
+.mobile-menu.active {
+  left: 0;
+}
+
+.mobile-menu ul {
+  list-style: none;
+}
+
+.mobile-menu ul li {
+  margin-bottom: 20px;
+}
+
+.mobile-menu ul li a {
+  color: #C0C0C0;
+  text-decoration: none;
+  font-size: 1.2rem;
+  position: relative;
+  padding: 5px 0;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu ul li a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(219, 90, 255, 1), rgba(98, 126, 255, 1));
+  transition: width 0.3s ease;
+}
+
+.mobile-menu ul li a:hover {
+  color: #ffffff;
+}
+
+.mobile-menu ul li a:hover::before {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+  
+  nav {
+    display: none;
+  }
+}
+
+/* Efecto glow mejorado menos invasivo */
+.glow {
+  font-family: 'Goldman', sans-serif; 
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow:
+    0 0 3px #b200ff,
+    0 0 5px #b200ff,
+    0 0 10px #b200ff,
+    0 0 15px #b200ff,
+    0 0 20px #b200ff;
+  letter-spacing: 0.6px;
+}

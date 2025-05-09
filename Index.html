@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentcia - Soluciones Digitales</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Oxanium y Goldman con pesos específicos -->
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700&family=Goldman:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome con CDN actualizado -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <!-- Container de partículas -->
+    <div id="particles-js"></div>
+    
+    <!-- Fondos con efectos de gradiente -->
+    <div class="bg-wrapper">
+        <div class="gradient-bg">
+            <!-- Posiciones según CSS -->
+            <div class="radial-light purple"></div>
+            <div class="radial-light blue"></div>
+        </div>
+    </div>
+    
+    <!-- Header principal -->
+    <header id="mainHeader">
+ 
+	<div class="logo">
+            <span class="logo-main">Present</span><span class="glow">cia</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#soluciones">Soluciones</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <a href="#contacto" class="cta-button">Cita Virtual</a>
+        
+        <!-- Botón de menú móvil -->
+        <button class="menu-button" id="menuButton">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+    
+    <!-- Menú móvil desplegable -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#soluciones">Soluciones</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </div>
+    
+    <!-- Header sticky -->
+    <header id="stickyHeader" class="sticky-header">
+        <div class="sticky-content">
+            <div class="logo">Present<span class="glow">cia</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#soluciones">Soluciones</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="#contacto" class="cta-button cta-sticky">Cita Virtual</a>
+            
+            <!-- Botón de menú móvil en sticky header -->
+            <button class="menu-button" id="menuButtonSticky">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header> 
+
+    <!-- Contenido principal -->
+    <div class="content">
+        <section class="hero">
+            <h1>Transformamos flujos de trabajo con tecnología inteligente</h1>
+            <p>Automatizaciones, workflows optimizados, bots e inteligencia artificial para impulsar tu negocio hacia el futuro. En Presentcia creamos soluciones digitales que potencian la eficiencia y productividad de tu empresa.</p>
+            <a href="#contacto" class="cta-button">Solicitar Demo</a>
+        </section>
+        
+        <section id="soluciones">
+            <h2>Nuestras Soluciones</h2>
+            <p>Ofrecemos un ecosistema completo de herramientas digitales diseñadas para optimizar cada aspecto de tu negocio.</p>
+        </section>
+        
+        <section id="servicios">
+            <h2>Servicios</h2>
+            <p>Desde la consultoría inicial hasta la implementación completa, te acompañamos en cada paso de tu transformación digital.</p>
+        </section>
+        
+        <section id="nosotros">
+            <h2>Sobre Nosotros</h2>
+            <p>Somos un equipo de expertos apasionados por la innovación y la eficiencia empresarial mediante soluciones tecnológicas avanzadas.</p>
+        </section>
+        
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>¿Listo para llevar tu negocio al siguiente nivel? Contáctanos hoy mismo para descubrir cómo podemos ayudarte.</p>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Presentcia. Todos los derechos reservados.</p>
+    </footer>
+    
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/51999807455" class="whatsapp-button" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainHeader = document.getElementById('mainHeader');
+            const stickyHeader = document.getElementById('stickyHeader');
+            const menuButton = document.getElementById('menuButton');
+            const menuButtonSticky = document.getElementById('menuButtonSticky');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            // Control del header sticky
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > window.innerHeight * 0.8) {
+                    mainHeader.classList.add('hidden');
+                    stickyHeader.classList.add('visible');
+                } else {
+                    mainHeader.classList.remove('hidden');
+                    stickyHeader.classList.remove('visible');
+                }
+            });
+            
+            // Control del menú móvil
+            function toggleMenu() {
+                mobileMenu.classList.toggle('active');
+                
+                // Asegurar que solo un botón esté activo a la vez
+                if (this === menuButton) {
+                    menuButton.classList.toggle('active');
+                    menuButtonSticky.classList.remove('active');
+                } else {
+                    menuButtonSticky.classList.toggle('active');
+                    menuButton.classList.remove('active');
+                }
+            }
+            
+            menuButton.addEventListener('click', toggleMenu);
+            menuButtonSticky.addEventListener('click', toggleMenu);
+            
+            // Inicialización de las partículas con configuración mejorada
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 60,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": ["#c380ff", "#627eff"]
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 2,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#c380ff",
+                        "opacity": 0.2,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 1.5,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": true,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 0.5
+                            }
+                        },
+                        "push": {
+                            "particles_nb": 3
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        });
+    </script>
+</body>
+</html>
